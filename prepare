@@ -10,27 +10,49 @@ deb     http://ftp.de.debian.org/debian/    ${DEBIAN_TESTING_CODENAME} main
 deb-src http://ftp.de.debian.org/debian/    ${DEBIAN_TESTING_CODENAME} main
 EOF
 
-apt update -qq
+apt update
 
-DEFAULT_PACKAGES=()
-DEFAULT_PACKAGES+=(build-essential)
-DEFAULT_PACKAGES+=(clang)
-DEFAULT_PACKAGES+=(clang-tidy)
-DEFAULT_PACKAGES+=(gcc)
-DEFAULT_PACKAGES+=(gcovr)
-DEFAULT_PACKAGES+=(g++)
-DEFAULT_PACKAGES+=(iwyu)
-DEFAULT_PACKAGES+=(lcov)
-DEFAULT_PACKAGES+=(libgtest-dev)
+readarray DEFAULT_PACKAGES <<EOF
+build-essential
+clang
+clang-tidy
+g++
+gcc
+gcovr
+iwyu
+lcov
+libgtest-dev
+pyflakes3
+pylint3
+python3
+python3-click
+python3-libtmux
+python3-pexpect
+python3-pip
+python3-psutil
+python3-pyelftools
+python3-pytest
+python3-xdg
+tmux
+EOF
 apt ${APT_INSTALL} ${DEFAULT_PACKAGES[@]}
 
-BACKPORTS_PACKAGES=()
-BACKPORTS_PACKAGES+=(meson)
+readarray BACKPORTS_PACKAGES <<EOF
+meson
+EOF
 apt ${APT_INSTALL} -t buster-backports ${BACKPORTS_PACKAGES[@]}
 
-TESTING_PACKAGES=()
-TESTING_PACKAGES+=(clang-format-10)
+readarray TESTING_PACKAGES <<EOF
+clang-format-10
+EOF
 apt ${APT_INSTALL} -t ${DEBIAN_TESTING_CODENAME} ${TESTING_PACKAGES[@]}
+
+pip3 install yapf==0.29.0
+pip3 install mypy==0.760
+pip3 install pdoc3==0.8.1
 
 ln /usr/bin/clang-format-10 /usr/bin/clang-format
 ln /usr/bin/iwyu_tool /usr/bin/iwyu_tool.py
+ln /usr/bin/pytest-3 /usr/bin/pytest
+ln /usr/bin/pylint3 /usr/bin/pylint
+ln /usr/bin/pyflakes3 /usr/bin/pyflakes
