@@ -23,7 +23,6 @@ iwyu
 lcov
 libgtest-dev
 pyflakes3
-pylint3
 python3
 python3-click
 python3-libtmux
@@ -39,6 +38,7 @@ apt ${APT_INSTALL} ${DEFAULT_PACKAGES[@]}
 
 readarray BACKPORTS_PACKAGES <<EOF
 meson
+pylint
 EOF
 apt ${APT_INSTALL} -t buster-backports ${BACKPORTS_PACKAGES[@]}
 
@@ -54,5 +54,4 @@ pip3 install pdoc3==0.8.1
 ln /usr/bin/clang-format-10 /usr/bin/clang-format
 ln /usr/bin/iwyu_tool /usr/bin/iwyu_tool.py
 ln /usr/bin/pytest-3 /usr/bin/pytest
-ln /usr/bin/pylint3 /usr/bin/pylint
 ln /usr/bin/pyflakes3 /usr/bin/pyflakes
