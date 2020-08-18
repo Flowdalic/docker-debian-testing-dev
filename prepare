@@ -17,13 +17,19 @@ EOF
 apt update
 
 readarray DEFAULT_PACKAGES <<EOF
+asymptote
+biber
 build-essential
 clang
 clang-tidy
+cwebx
+debhelper
+dh-python
 doxygen
 g++
 gcc
 gcovr
+imagemagick
 iwyu
 lcov
 libgtest-dev
@@ -33,11 +39,24 @@ python3-click
 python3-libtmux
 python3-pexpect
 python3-pip
+python3-prompt-toolkit
 python3-psutil
 python3-pyelftools
+python3-pygments
 python3-pytest
 python3-xdg
+r-cran-knitr
+texlive-bibtex-extra
+texlive-binaries
+texlive-extra-utils
+texlive-latex-base
+texlive-latex-extra
+texlive-latex-recommended
+texlive-metapost
+texlive-omega
+texlive-pictures
 tmux
+transfig
 EOF
 apt ${APT_INSTALL} ${DEFAULT_PACKAGES[@]}
 
