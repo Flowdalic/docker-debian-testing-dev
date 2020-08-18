@@ -16,6 +16,7 @@ readarray DEFAULT_PACKAGES <<EOF
 build-essential
 clang
 clang-tidy
+doxygen
 g++
 gcc
 gcovr
