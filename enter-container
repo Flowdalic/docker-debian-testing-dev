@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+docker run \
+	   --interactive \
+	   --tty \
+	   flowdalic/debian-dev:latest \
+	   /bin/bash
