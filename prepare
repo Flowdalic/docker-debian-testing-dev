@@ -10,6 +10,10 @@ deb     http://ftp.de.debian.org/debian/    ${DEBIAN_TESTING_CODENAME} main
 deb-src http://ftp.de.debian.org/debian/    ${DEBIAN_TESTING_CODENAME} main
 EOF
 
+cat <<EOF > /etc/apt/apt.conf.d/default-release-stable
+APT::Default-Release "stable";
+EOF
+
 apt update
 
 readarray DEFAULT_PACKAGES <<EOF
