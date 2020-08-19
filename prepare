@@ -47,6 +47,7 @@ python3-psutil
 python3-pyelftools
 python3-pygments
 python3-pytest
+python3-wheel
 python3-xdg
 r-cran-knitr
 texlive-bibtex-extra
