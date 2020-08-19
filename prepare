@@ -73,6 +73,7 @@ apt ${APT_INSTALL} -t buster-backports ${BACKPORTS_PACKAGES[@]}
 
 readarray TESTING_PACKAGES <<EOF
 clang-format-10
+gcc-8-base
 pylint
 EOF
 apt ${APT_INSTALL} -t ${DEBIAN_TESTING_CODENAME} ${TESTING_PACKAGES[@]}
