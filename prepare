@@ -26,8 +26,6 @@ readarray DEFAULT_PACKAGES <<EOF
 asymptote
 biber
 build-essential
-clang
-clang-tidy
 cwebx
 debhelper
 dh-python
@@ -36,7 +34,6 @@ g++
 gcc
 gcovr
 imagemagick
-iwyu
 lcov
 libgtest-dev
 pyflakes3
@@ -72,8 +69,11 @@ EOF
 apt ${APT_INSTALL} -t buster-backports ${BACKPORTS_PACKAGES[@]}
 
 readarray TESTING_PACKAGES <<EOF
+clang
 clang-format-10
+clang-tidy
 gcc-8-base
+iwyu
 pylint
 EOF
 apt ${APT_INSTALL} -t ${DEBIAN_TESTING_CODENAME} ${TESTING_PACKAGES[@]}
