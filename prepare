@@ -35,7 +35,6 @@ gcc
 gcovr
 imagemagick
 lcov
-libgtest-dev
 pyflakes3
 python3
 python3-click
@@ -75,6 +74,7 @@ clang-format-10
 clang-tidy
 gcc-8-base
 iwyu
+libgtest-dev
 pylint
 EOF
 apt ${APT_INSTALL} -t ${DEBIAN_TESTING_CODENAME} ${TESTING_PACKAGES[@]}
