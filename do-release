@@ -44,7 +44,10 @@ fi
 
 readonly DOCKER_COORDINATES="${CONTAINER_NAME}:${VERSION}"
 
-docker build -t "${DOCKER_COORDINATES}" .
+docker build \
+	   --compress=true \
+	   --tag="${DOCKER_COORDINATES}" \
+	   .
 
 docker push "${DOCKER_COORDINATES}"
 
