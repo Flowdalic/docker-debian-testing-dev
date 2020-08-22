@@ -55,4 +55,6 @@ if ${TAG_HEAD}; then
 	git tag -s -m "${CONTAINER_NAME} ${VERSION}" "${VERSION}"
 fi
 
-git push origin "${VERSION}"
+git push origin \
+	master \
+	"${VERSION}"
