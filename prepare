@@ -49,6 +49,7 @@ python3-pytest
 python3-wheel
 python3-xdg
 r-cran-knitr
+texinfo
 texlive-bibtex-extra
 texlive-binaries
 texlive-extra-utils
