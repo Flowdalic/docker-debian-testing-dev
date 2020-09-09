@@ -20,7 +20,7 @@ EOF
 # the container, hence zap the file.
 rm /etc/apt/apt.conf.d/70debconf
 
-apt update
+apt-get update
 
 readarray DEFAULT_PACKAGES <<EOF
 asymptote
@@ -61,12 +61,12 @@ texlive-pictures
 tmux
 transfig
 EOF
-apt ${APT_INSTALL} ${DEFAULT_PACKAGES[@]}
+apt-get ${APT_INSTALL} ${DEFAULT_PACKAGES[@]}
 
 readarray BACKPORTS_PACKAGES <<EOF
 meson
 EOF
-apt ${APT_INSTALL} -t buster-backports ${BACKPORTS_PACKAGES[@]}
+apt-get ${APT_INSTALL} -t buster-backports ${BACKPORTS_PACKAGES[@]}
 
 readarray TESTING_PACKAGES <<EOF
 clang
@@ -78,7 +78,7 @@ libgtest-dev
 pylint
 python3-pyflakes
 EOF
-apt ${APT_INSTALL} -t ${DEBIAN_TESTING_CODENAME} ${TESTING_PACKAGES[@]}
+apt-get ${APT_INSTALL} -t ${DEBIAN_TESTING_CODENAME} ${TESTING_PACKAGES[@]}
 
 pip3 install yapf==0.29.0
 pip3 install mypy==0.760
