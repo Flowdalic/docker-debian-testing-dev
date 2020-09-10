@@ -90,3 +90,4 @@ pip3 install pdoc3==0.8.1
 ln /usr/bin/clang-format-10 /usr/bin/clang-format
 ln /usr/bin/iwyu_tool /usr/bin/iwyu_tool.py
 ln /usr/bin/pytest-3 /usr/bin/pytest
+ln /usr/bin/pyflakes3 /usr/bin/pyflakes
