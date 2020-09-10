@@ -76,7 +76,7 @@ gcc-8-base
 iwyu
 libgtest-dev
 pylint
-pyflakes
+pyflakes3
 python3-pyflakes
 EOF
 apt-get ${APT_INSTALL} -t ${DEBIAN_TESTING_CODENAME} ${TESTING_PACKAGES[@]}
