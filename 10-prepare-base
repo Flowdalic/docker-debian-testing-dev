@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+source config
+
+cat <<EOF > /etc/apt/sources.list.d/testing.list
+deb     http://ftp.de.debian.org/debian/    ${DEBIAN_TESTING_CODENAME} main
+deb-src http://ftp.de.debian.org/debian/    ${DEBIAN_TESTING_CODENAME} main
+EOF
+
+cat <<EOF > /etc/apt/apt.conf.d/default-release-stable
+APT::Default-Release "stable";
+EOF
+
+# /etc/apt/apt.conf.d/70debconf sets
+# DPkg::Pre-Install-Pkgs {"/usr/sbin/dpkg-preconfigure --apt || true";};
+# which pre-configures all packages. We do not want that when building
+# the container, hence zap the file.
+rm /etc/apt/apt.conf.d/70debconf
+
+apt-get update

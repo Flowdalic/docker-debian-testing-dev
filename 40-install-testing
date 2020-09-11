@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+source config
+readarray TESTING_PACKAGES <<EOF
+clang
+clang-format-10
+clang-tidy
+gcc-8-base
+iwyu
+libgtest-dev
+pylint
+pyflakes3
+python3-pyflakes
+EOF
+apt-get ${APT_INSTALL} -t ${DEBIAN_TESTING_CODENAME} ${TESTING_PACKAGES[@]}

@@ -1,0 +1,45 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+source config
+
+readarray DEFAULT_PACKAGES <<EOF
+asymptote
+biber
+build-essential
+cwebx
+debhelper
+dh-python
+doxygen
+g++
+gcc
+gcovr
+imagemagick
+lcov
+python3
+python3-click
+python3-libtmux
+python3-pexpect
+python3-pip
+python3-prompt-toolkit
+python3-psutil
+python3-pyelftools
+python3-pygments
+python3-pytest
+python3-wheel
+python3-xdg
+r-cran-knitr
+texinfo
+texlive-bibtex-extra
+texlive-binaries
+texlive-extra-utils
+texlive-latex-base
+texlive-latex-extra
+texlive-latex-recommended
+texlive-metapost
+texlive-omega
+texlive-pictures
+tmux
+transfig
+EOF
+apt-get ${APT_INSTALL} ${DEFAULT_PACKAGES[@]}
