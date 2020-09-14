@@ -30,6 +30,7 @@ python3-pytest
 python3-wheel
 python3-xdg
 r-cran-knitr
+rubber
 texinfo
 texlive-full
 tmux
