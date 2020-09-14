@@ -31,15 +31,7 @@ python3-wheel
 python3-xdg
 r-cran-knitr
 texinfo
-texlive-bibtex-extra
-texlive-binaries
-texlive-extra-utils
-texlive-latex-base
-texlive-latex-extra
-texlive-latex-recommended
-texlive-metapost
-texlive-omega
-texlive-pictures
+texlive-full
 tmux
 transfig
 EOF
