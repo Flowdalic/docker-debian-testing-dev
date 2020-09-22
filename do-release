@@ -2,10 +2,15 @@
 
 set -euo pipefail
 
-while getopts :d OPT; do
+NO_DOCKER_CACHE="false"
+
+while getopts :dn OPT; do
 	case $OPT in
 		d)
 			set -x
+			;;
+		n)
+			NO_DOCKER_CACHE="true"
 			;;
 		*)
 			echo "usage: ${0##*/} [-d] [version]"
@@ -47,6 +52,7 @@ readonly DOCKER_COORDINATES="${CONTAINER_NAME}:${VERSION}"
 docker build \
 	   --compress=true \
 	   --tag="${DOCKER_COORDINATES}" \
+	   --no-cache="${NO_DOCKER_CACHE}" \
 	   .
 
 docker push "${DOCKER_COORDINATES}"
