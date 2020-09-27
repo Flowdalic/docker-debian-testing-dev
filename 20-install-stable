@@ -37,3 +37,19 @@ tmux
 transfig
 EOF
 apt-get ${APT_INSTALL} ${DEFAULT_PACKAGES[@]}
+
+readarray REMOVE_PACKAGES <<EOF
+texlive-fonts-extra-doc
+texlive-fonts-recommended-doc
+texlive-humanities-doc
+texlive-latex-base-doc
+texlive-latex-extra-doc
+texlive-latex-recommended-doc
+texlive-metapost-doc
+texlive-pictures-doc
+texlive-pstricks-doc
+texlive-publishers-doc
+texlive-science-doc
+EOF
+
+apt-get remove -y ${REMOVE_PACKAGES[@]}
