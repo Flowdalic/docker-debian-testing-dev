@@ -14,9 +14,6 @@ RUN chmod 755 /30-install-backports && /30-install-backports
 COPY 40-install-testing /
 RUN chmod 755 /40-install-testing && /40-install-testing
 
-COPY 50-autoremove-packages /
-RUN chmod 755 /50-autoremove-packages && /50-autoremove-packages
-
 COPY 60-pip-install /
 RUN chmod 755 /60-pip-install && /60-pip-install
 
