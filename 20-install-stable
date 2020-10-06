@@ -32,11 +32,15 @@ python3-xdg
 r-cran-knitr
 rubber
 texinfo
-texlive-full
 tmux
 transfig
 EOF
 apt-get ${APT_INSTALL} ${DEFAULT_PACKAGES[@]}
+
+readarray PACKAGES_WITH_RECOMMENDS <<EOF
+texlive-full
+EOF
+apt-get -y install ${PACKAGES_WITH_RECOMMENDS[@]}
 
 readarray REMOVE_PACKAGES <<EOF
 texlive-fonts-extra-doc
