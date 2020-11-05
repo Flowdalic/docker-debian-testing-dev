@@ -17,6 +17,7 @@ gcovr
 git
 imagemagick
 lcov
+nasm
 python3
 python3-click
 python3-dev
