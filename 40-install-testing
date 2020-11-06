@@ -2,6 +2,18 @@
 set -euo pipefail
 
 source config
+
+# Workaround for
+# E: Could not configure 'libc6:amd64'.
+# E: Could not perform immediate configuration on 'libnss-nis:amd64'. Please
+# see man 5 apt.conf under APT::Immediate-Configure for details. (2)
+# Debian Bug #972770
+apt-get ${APT_INSTALL} \
+		-t ${DEBIAN_TESTING_CODENAME} \
+		-o APT::Immediate-Configure=0 \
+		--fix-broken \
+		libc6 gcc-8-base
+
 readarray TESTING_PACKAGES <<EOF
 clang
 clang-format-10
