@@ -15,6 +15,8 @@ g++
 gcc
 gcovr
 git
+gnupg2
+graphviz
 imagemagick
 lcov
 nasm
@@ -36,6 +38,7 @@ rubber
 texinfo
 tmux
 transfig
+wget
 EOF
 apt-get ${APT_INSTALL} ${DEFAULT_PACKAGES[@]}
 
