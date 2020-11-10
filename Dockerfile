@@ -17,5 +17,8 @@ RUN chmod 755 /40-install-testing && /40-install-testing
 COPY 60-pip-install /
 RUN chmod 755 /60-pip-install && /60-pip-install
 
+COPY 65-llvm /
+RUN chmod 755 /65-llvm && /65-llvm
+
 COPY 70-finish /
 RUN chmod 755 /70-finish && /70-finish
