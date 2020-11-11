@@ -21,8 +21,9 @@ clang-tidy
 gcc-8-base
 iwyu
 libgtest-dev
-pylint
+liburing-dev
 pyflakes3
+pylint
 python3-pyflakes
 valgrind
 EOF
