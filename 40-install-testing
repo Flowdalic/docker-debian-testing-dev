@@ -15,9 +15,6 @@ apt-get ${APT_INSTALL} \
 		libc6 gcc-8-base
 
 readarray TESTING_PACKAGES <<EOF
-clang
-clang-format-10
-clang-tidy
 gcc-8-base
 iwyu
 libgtest-dev

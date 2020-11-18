@@ -13,6 +13,7 @@ apt-get update
 
 readonly LLVM_PACKAGES <<EOF
 clang-11
+clang-format-11
 clang-tidy-11
 clang-tools-11
 llvm-11
