@@ -21,6 +21,7 @@ clang-tidy
 gcc-8-base
 iwyu
 libgtest-dev
+liburcu-dev
 liburing-dev
 pyflakes3
 pylint
