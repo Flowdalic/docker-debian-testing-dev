@@ -2,6 +2,7 @@
 set -euo pipefail
 
 source config
+
 cat <<EOF > /etc/apt/sources.list.d/llvm.list
 deb http://apt.llvm.org/buster/ llvm-toolchain-buster-11 main
 deb-src http://apt.llvm.org/buster/ llvm-toolchain-buster-11 main
@@ -11,7 +12,7 @@ wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | apt-key add -
 
 apt-get update
 
-readonly LLVM_PACKAGES <<EOF
+readarray LLVM_PACKAGES <<EOF
 clang-11
 clang-format-11
 clang-tidy-11
