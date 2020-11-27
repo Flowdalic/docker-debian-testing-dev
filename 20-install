@@ -7,6 +7,11 @@ readarray DEFAULT_PACKAGES <<EOF
 asymptote
 biber
 build-essential
+clang-11
+clang-format-11
+clang-tidy-11
+clang-tools-11
+cmake
 cwebx
 debhelper
 dh-python
@@ -19,8 +24,17 @@ gnupg2
 graphviz
 imagemagick
 lcov
+libclang-11-dev
+libgtest-dev
+liburcu-dev
+liburing-dev
+llvm-11
+llvm-11-dev
+meson
 nasm
 pkg-config
+pyflakes3
+pylint
 python3
 python3-click
 python3-dev
@@ -30,6 +44,7 @@ python3-pip
 python3-prompt-toolkit
 python3-psutil
 python3-pyelftools
+python3-pyflakes
 python3-pygments
 python3-pytest
 python3-wheel
@@ -39,6 +54,7 @@ rubber
 texinfo
 tmux
 transfig
+valgrind
 wget
 EOF
 apt-get ${APT_INSTALL} ${DEFAULT_PACKAGES[@]}
@@ -63,3 +79,5 @@ texlive-science-doc
 EOF
 
 apt-get remove -y ${REMOVE_PACKAGES[@]}
+
+apt-get autoremove -y

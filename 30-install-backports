@@ -1,8 +1,0 @@
-#!/usr/bin/env bash
-set -euo pipefail
-
-source config
-readarray BACKPORTS_PACKAGES <<EOF
-meson
-EOF
-apt-get ${APT_INSTALL} -t buster-backports ${BACKPORTS_PACKAGES[@]}

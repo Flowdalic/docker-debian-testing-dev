@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+mkdir iwyu
+cd iwyu
+
+readonly IWYU_TAR_GZ_URL="https://include-what-you-use.org/downloads/include-what-you-use-0.15.src.tar.gz"
+
+wget "${IWYU_TAR_GZ_URL}"
+
+IWYU_TAR_GZ=$(basename "${IWYU_TAR_GZ_URL}")
+
+tar -xzf "${IWYU_TAR_GZ}"
+
+mkdir build
+cd build
+cmake \
+	-DCMAKE_PREFIX_PATH=/usr/lib/llvm-11 \
+	..
+make -l `nproc` -j `nproc`
+make install
+
+cd ../..
+rm -rf iwyu

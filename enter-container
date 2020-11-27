@@ -3,5 +3,5 @@
 docker run \
 	   --interactive \
 	   --tty \
-	   flowdalic/debian-dev:latest \
+	   flowdalic/debian-testing-dev:latest \
 	   /bin/bash

@@ -20,7 +20,7 @@ done
 shift $(( OPTIND - 1 ))
 OPTIND=1
 
-readonly CONTAINER_NAME="flowdalic/debian-dev"
+readonly CONTAINER_NAME="flowdalic/debian-testing-dev"
 
 set +u
 if [[ -z $1 ]]; then
