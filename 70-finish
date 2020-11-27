@@ -8,3 +8,4 @@ for CLANG_TOOL in clang clang++ clang-format clang-tidy; do
 done
 ln /usr/bin/pytest-3 /usr/bin/pytest
 ln /usr/bin/pyflakes3 /usr/bin/pyflakes
+ln /usr/bin/python3 /usr/bin/python
