@@ -3,7 +3,7 @@ set -euo pipefail
 
 declare -ir LLVM_MAJOR_VERSION="11"
 
-for CLANG_TOOL in clang clang-format clang-tidy; do
+for CLANG_TOOL in clang clang++ clang-format clang-tidy; do
 	ln "/usr/bin/${CLANG_TOOL}-${LLVM_MAJOR_VERSION}" "/usr/bin/${CLANG_TOOL}"
 done
 ln /usr/bin/pytest-3 /usr/bin/pytest
