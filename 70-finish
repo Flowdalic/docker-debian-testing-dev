@@ -3,9 +3,16 @@ set -euo pipefail
 
 declare -ir LLVM_MAJOR_VERSION="11"
 
-for CLANG_TOOL in clang clang++ clang-format clang-tidy; do
+CLANG_TOOLS=()
+CLANG_TOOLS+=(clang)
+CLANG_TOOLS+=(clang++)
+CLANG_TOOLS+=(clang-format)
+CLANG_TOOLS+=(clang-tidy)
+CLANG_TOOLS+=(run-clang-tidy)
+for CLANG_TOOL in "${CLANG_TOOLS[@]}"; do
 	ln "/usr/bin/${CLANG_TOOL}-${LLVM_MAJOR_VERSION}" "/usr/bin/${CLANG_TOOL}"
 done
+
 ln /usr/bin/pytest-3 /usr/bin/pytest
 ln /usr/bin/pyflakes3 /usr/bin/pyflakes
 ln /usr/bin/python3 /usr/bin/python
