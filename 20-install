@@ -24,6 +24,7 @@ gnupg2
 graphviz
 imagemagick
 lcov
+libboost-all-dev
 libclang-11-dev
 libgtest-dev
 liburcu-dev
