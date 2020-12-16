@@ -2,5 +2,5 @@
 set -euo pipefail
 
 pip3 install yapf==0.30.0
-pip3 install mypy==0.781
+pip3 install mypy==0.790
 pip3 install pdoc3==0.8.1
