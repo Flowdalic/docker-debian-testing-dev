@@ -7,6 +7,7 @@ readarray DEFAULT_PACKAGES <<EOF
 asymptote
 biber
 build-essential
+ccache
 clang-11
 clang-format-11
 clang-tidy-11
