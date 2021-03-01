@@ -28,6 +28,8 @@ lcov
 libboost-all-dev
 libclang-11-dev
 libgtest-dev
+libtbb-dev
+libtbb2
 liburcu-dev
 liburing-dev
 llvm-11
