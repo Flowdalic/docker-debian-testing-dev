@@ -36,6 +36,7 @@ llvm-11
 llvm-11-dev
 meson
 nasm
+parallel
 pkg-config
 pyflakes3
 pylint
