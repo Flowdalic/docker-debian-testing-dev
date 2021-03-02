@@ -27,6 +27,7 @@ imagemagick
 lcov
 libboost-all-dev
 libclang-11-dev
+libgomp1
 libgtest-dev
 libtbb-dev
 libtbb2
