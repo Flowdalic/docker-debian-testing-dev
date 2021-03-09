@@ -13,6 +13,7 @@ clang-format-11
 clang-tidy-11
 clang-tools-11
 cmake
+cppcheck
 cwebx
 debhelper
 dh-python
