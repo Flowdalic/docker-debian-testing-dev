@@ -39,6 +39,7 @@ llvm-11
 llvm-11-dev
 meson
 nasm
+openssh-client
 parallel
 pkg-config
 pyflakes3
