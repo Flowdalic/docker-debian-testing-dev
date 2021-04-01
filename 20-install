@@ -90,4 +90,4 @@ EOF
 
 dpkg -r --force-depends ${REMOVE_PACKAGES[@]}
 
-apt-get autoremove -y
+apt-get autoremove -y -f
