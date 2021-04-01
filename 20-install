@@ -88,6 +88,6 @@ texlive-publishers-doc
 texlive-science-doc
 EOF
 
-apt-get remove -y ${REMOVE_PACKAGES[@]}
+dpkg -r --force-depends ${REMOVE_PACKAGES[@]}
 
 apt-get autoremove -y
