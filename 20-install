@@ -5,6 +5,7 @@ source config
 
 readarray DEFAULT_PACKAGES <<EOF
 asymptote
+bc
 biber
 build-essential
 ccache
