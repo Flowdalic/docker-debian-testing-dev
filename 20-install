@@ -30,6 +30,7 @@ lcov
 libargon2-dev
 libboost-all-dev
 libclang-11-dev
+libfmt-dev
 libgomp1
 libgtest-dev
 libtbb-dev
