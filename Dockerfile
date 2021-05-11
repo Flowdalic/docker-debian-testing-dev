@@ -8,6 +8,9 @@ RUN chmod 755 /10-prepare-base && /10-prepare-base
 COPY 20-install /
 RUN chmod 755 /20-install && /20-install
 
+COPY 50-llvm /
+RUN chmod 755 /50-llvm && /50-llvm
+
 COPY 60-pip-install /
 RUN chmod 755 /60-pip-install && /60-pip-install
 
