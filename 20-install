@@ -39,7 +39,6 @@ liburcu-dev
 liburing-dev
 llvm-11
 llvm-11-dev
-meson
 nasm
 openssh-client
 parallel
