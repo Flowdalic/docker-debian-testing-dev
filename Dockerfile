@@ -20,5 +20,8 @@ RUN chmod 755 /65-iwyu && /65-iwyu
 COPY 66-mill /
 RUN chmod 755 /66-mill && /66-mill
 
+COPY 67-amm /
+RUN chmod 755 /67-amm && /67-amm
+
 COPY 70-finish /
 RUN chmod 755 /70-finish && /70-finish
