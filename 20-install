@@ -15,6 +15,7 @@ clang-tidy-11
 clang-tools-11
 cmake
 cppcheck
+curl
 cwebx
 debhelper
 dh-python
