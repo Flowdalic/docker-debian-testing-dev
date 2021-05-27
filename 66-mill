@@ -2,9 +2,7 @@
 set -euo pipefail
 
 readonly MILL_VERSION="0.9.7"
-readonly MILL_URL="https://github.com/com-lihaoyi/mill/releases/download/${MILL_VERSION}/${MILL_VERSION}-assembly"
 
-wget "${MILL_URL}"
-
-mv "${MILL_VERSION}-assembly" /usr/local/bin/mill
-chmod 755 /usr/local/bin/mill
+curl -L "https://github.com/com-lihaoyi/mill/releases/download/${MILL_VERSION}/${MILL_VERSION}-assembly" \
+     > /usr/local/bin/mill
+chmod +x /usr/local/bin/mill
