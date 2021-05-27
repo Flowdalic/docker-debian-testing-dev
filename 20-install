@@ -40,6 +40,7 @@ liburing-dev
 llvm-11
 llvm-11-dev
 nasm
+ninja-build
 openjdk-11-jdk-headless
 openssh-client
 parallel
