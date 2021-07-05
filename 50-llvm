@@ -3,9 +3,11 @@ set -euo pipefail
 
 source config
 
+declare -ir LLVM_VERSION=12
+
 cat <<EOF > /etc/apt/sources.list.d/llvm.list
-deb http://apt.llvm.org/bullseye/ llvm-toolchain-bullseye-12 main
-deb-src http://apt.llvm.org/bullseye/ llvm-toolchain-bullseye-12 main
+deb http://apt.llvm.org/bullseye/ llvm-toolchain-bullseye-${LLVM_VERSION} main
+deb-src http://apt.llvm.org/bullseye/ llvm-toolchain-bullseye-${LLVM_VERSION} main
 EOF
 
 wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | apt-key add -
@@ -13,31 +15,31 @@ wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | apt-key add -
 apt-get update
 
 readarray LLVM_PACKAGES <<EOF
-clang-12
-clang-format-12
-clang-tidy-12
-clang-tools-12
-clangd-12
-libc++-12-dev
-libc++abi-12-dev
-libclang-12-dev
-libclang-common-12-dev
-libclang1-12
-libclc-12
-libfuzzer-12-dev
-libllvm-12-ocaml-dev
-libllvm12
-libomp-12-dev
-lld-12
-lldb-12
-llvm-12
-llvm-12-dev
-llvm-12-examples
-llvm-12-runtime
-python3-clang-12
+clang-${LLVM_VERSION}
+clang-format-${LLVM_VERSION}
+clang-tidy-${LLVM_VERSION}
+clang-tools-${LLVM_VERSION}
+clangd-${LLVM_VERSION}
+libc++-${LLVM_VERSION}-dev
+libc++abi-${LLVM_VERSION}-dev
+libclang-${LLVM_VERSION}-dev
+libclang-common-${LLVM_VERSION}-dev
+libclang1-${LLVM_VERSION}
+libclc-${LLVM_VERSION}
+libfuzzer-${LLVM_VERSION}-dev
+libllvm-${LLVM_VERSION}-ocaml-dev
+libllvm${LLVM_VERSION}
+libomp-${LLVM_VERSION}-dev
+lld-${LLVM_VERSION}
+lldb-${LLVM_VERSION}
+llvm-${LLVM_VERSION}
+llvm-${LLVM_VERSION}-dev
+llvm-${LLVM_VERSION}-examples
+llvm-${LLVM_VERSION}-runtime
+python3-clang-${LLVM_VERSION}
 EOF
 
 apt-get ${APT_INSTALL} ${LLVM_PACKAGES[@]}
 
 # Make libomp findable via e.g. Meson's find_library()
-ln -s /usr/lib/llvm-12/lib/libomp.so /usr/lib
+ln -s "/usr/lib/llvm-${LLVM_VERSION}/lib/libomp.so" /usr/lib
