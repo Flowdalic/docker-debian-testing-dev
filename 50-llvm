@@ -38,3 +38,6 @@ python3-clang-12
 EOF
 
 apt-get ${APT_INSTALL} ${LLVM_PACKAGES[@]}
+
+# Make libomp findable via e.g. Meson's find_library()
+ln -s /usr/lib/llvm-12/lib/libomp.so /usr/lib
