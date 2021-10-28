@@ -3,11 +3,12 @@ set -euo pipefail
 
 source config
 
+readonly DEBIAN_CODENAME="bullseye"
 declare -ir LLVM_VERSION=12
 
 cat <<EOF > /etc/apt/sources.list.d/llvm.list
-deb http://apt.llvm.org/bullseye/ llvm-toolchain-bullseye-${LLVM_VERSION} main
-deb-src http://apt.llvm.org/bullseye/ llvm-toolchain-bullseye-${LLVM_VERSION} main
+deb http://apt.llvm.org/${DEBIAN_CODENAME}/ llvm-toolchain-${DEBIAN_CODENAME}-${LLVM_VERSION} main
+deb-src http://apt.llvm.org/${DEBIAN_CODENAME}/ llvm-toolchain-${DEBIAN_CODENAME}-${LLVM_VERSION} main
 EOF
 
 wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | apt-key add -
