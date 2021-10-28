@@ -3,12 +3,35 @@ set -euo pipefail
 
 source config
 
-readonly DEBIAN_CODENAME="bullseye"
+readonly DEBIAN_CODENAME="unstable"
 declare -ir LLVM_VERSION=12
 
+readonly LLVM_APT_PACKAGES_DB="http://apt.llvm.org/${DEBIAN_CODENAME}/db/packages.db"
+
+if ! wget --method=HEAD "${LLVM_APT_PACKAGES_DB}"; then
+    echo "LLVM package database for ${DEBIAN_CODENAME} does not exist. Falling back to manual installation."
+
+    apt install -y lsb-release wget software-properties-common
+
+    wget https://apt.llvm.org/llvm.sh
+    chmod +x llvm.sh
+    ./llvm.sh "${LLVM_VERSION}"
+    rm llvm.sh
+    exit
+fi
+
+case "${DEBIAN_CODENAME}" in
+    unstable)
+	readonly LLVM_REPO_NAME="llvm-toolchain-${LLVM_VERSION}"
+	;;
+    *)
+	readonly LLVM_REPO_NAME="llvm-toolchain-${DEBIAN_CODENAME}-${LLVM_VERSION}"
+	;;
+esac
+
 cat <<EOF > /etc/apt/sources.list.d/llvm.list
-deb http://apt.llvm.org/${DEBIAN_CODENAME}/ llvm-toolchain-${DEBIAN_CODENAME}-${LLVM_VERSION} main
-deb-src http://apt.llvm.org/${DEBIAN_CODENAME}/ llvm-toolchain-${DEBIAN_CODENAME}-${LLVM_VERSION} main
+deb http://apt.llvm.org/${DEBIAN_CODENAME}/ ${LLVM_REPO_NAME} main
+deb-src http://apt.llvm.org/${DEBIAN_CODENAME}/ ${LLVM_REPO_NAME} main
 EOF
 
 wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | apt-key add -
