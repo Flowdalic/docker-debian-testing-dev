@@ -42,6 +42,7 @@ liburing-dev
 linux-perf
 llvm-11
 llvm-11-dev
+lsb-release
 nasm
 ninja-build
 openjdk-11-jdk-headless

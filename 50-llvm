@@ -1,44 +1,41 @@
 #!/usr/bin/env bash
 set -euo pipefail
+set -x
 
 source config
 
-readonly DEBIAN_CODENAME="unstable"
-declare -ir LLVM_VERSION=12
+readonly LLVM_VERSIONS=(
+    12
+    13
+)
 
-readonly LLVM_APT_PACKAGES_DB="http://apt.llvm.org/${DEBIAN_CODENAME}/db/packages.db"
+install_llvm() {
+    local llvm_version="${1}"
 
-if ! wget --method=HEAD "${LLVM_APT_PACKAGES_DB}"; then
-    echo "LLVM package database for ${DEBIAN_CODENAME} does not exist. Falling back to manual installation."
+    local debian_codename
+    debian_codename=$(lsb_release --codename --short)
 
-    apt install -y lsb-release wget software-properties-common
+    local llvm_repo_name
+    local llvm_repo_dir
+    case "${debian_codename}" in
+	bookworm)
+	    llvm_repo_name="llvm-toolchain-${llvm_version}"
+	    llvm_repo_dir="unstable"
+	    ;;
+	*)
+	    llvm_repo_name="llvm-toolchain-${debian_codename}-${llvm_version}"
+	    llvm_repo_dir="${debian_codename}"
+	    ;;
+    esac
 
-    wget https://apt.llvm.org/llvm.sh
-    chmod +x llvm.sh
-    ./llvm.sh "${LLVM_VERSION}"
-    rm llvm.sh
-    exit
-fi
-
-case "${DEBIAN_CODENAME}" in
-    unstable)
-	readonly LLVM_REPO_NAME="llvm-toolchain-${LLVM_VERSION}"
-	;;
-    *)
-	readonly LLVM_REPO_NAME="llvm-toolchain-${DEBIAN_CODENAME}-${LLVM_VERSION}"
-	;;
-esac
-
-cat <<EOF > /etc/apt/sources.list.d/llvm.list
-deb http://apt.llvm.org/${DEBIAN_CODENAME}/ ${LLVM_REPO_NAME} main
-deb-src http://apt.llvm.org/${DEBIAN_CODENAME}/ ${LLVM_REPO_NAME} main
+    cat <<EOF > /etc/apt/sources.list.d/llvm-${llvm_version}.list
+deb http://apt.llvm.org/${llvm_repo_dir}/ ${llvm_repo_name} main
+deb-src http://apt.llvm.org/${llvm_repo_dir}/ ${llvm_repo_name} main
 EOF
 
-wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | apt-key add -
+    apt-get update
 
-apt-get update
-
-readarray LLVM_PACKAGES <<EOF
+    readarray LLVM_PACKAGES <<EOF
 clang-${LLVM_VERSION}
 clang-format-${LLVM_VERSION}
 clang-tidy-${LLVM_VERSION}
@@ -63,7 +60,16 @@ llvm-${LLVM_VERSION}-runtime
 python3-clang-${LLVM_VERSION}
 EOF
 
-apt-get ${APT_INSTALL} ${LLVM_PACKAGES[@]}
+    apt-get ${APT_INSTALL} ${LLVM_PACKAGES[@]}
 
-# Make libomp findable via e.g. Meson's find_library()
-ln -s "/usr/lib/llvm-${LLVM_VERSION}/lib/libomp.so" /usr/lib
+    if [[ "${llvm_version}" == "${LLVM_VERSIONS[-1]}" ]]; then
+	# Make libomp findable via e.g. Meson's find_library()
+	ln -s "/usr/lib/llvm-${llvm_version}/lib/libomp.so" /usr/lib
+    fi
+}
+
+curl https://apt.llvm.org/llvm-snapshot.gpg.key --output /etc/apt/trusted.gpg.d/llvm-snapshot.asc
+
+for LLVM_VERSION in "${LLVM_VERSIONS[@]}"; do
+    install_llvm "${LLVM_VERSION}"
+done
