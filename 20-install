@@ -9,10 +9,6 @@ bc
 biber
 build-essential
 ccache
-clang-11
-clang-format-11
-clang-tidy-11
-clang-tools-11
 cmake
 cppcheck
 curl
@@ -31,7 +27,6 @@ imagemagick
 lcov
 libargon2-dev
 libboost-all-dev
-libclang-11-dev
 libfmt-dev
 libgomp1
 libgtest-dev
@@ -40,8 +35,6 @@ libtbb2
 liburcu-dev
 liburing-dev
 linux-perf
-llvm-11
-llvm-11-dev
 lsb-release
 nasm
 ninja-build
