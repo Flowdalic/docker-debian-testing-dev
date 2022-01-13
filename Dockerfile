@@ -23,5 +23,8 @@ RUN chmod 755 /66-mill && /66-mill
 COPY 67-amm /
 RUN chmod 755 /67-amm && /67-amm
 
+COPY 68-instrumented-libc++ /
+RUN chmod 755 /68-instrumented-libc++ && /68-instrumented-libc++
+
 COPY 70-finish /
 RUN chmod 755 /70-finish && /70-finish

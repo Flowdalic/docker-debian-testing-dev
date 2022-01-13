@@ -1,0 +1,38 @@
+#!/usr/bin/env bash
+set -euo pipefail
+set -x
+
+readonly LLVM_VERSION="13.0.0"
+readonly LLVM_SOURCES="https://github.com/llvm/llvm-project/releases/download/llvmorg-${LLVM_VERSION}/llvm-project-${LLVM_VERSION}.src.tar.xz"
+
+
+readonly WORKDIR="llvm-${LLVM_VERSION}"
+
+mkdir "${WORKDIR}"
+pushd "${WORKDIR}"
+
+curl -L "${LLVM_SOURCES}" |\
+    tar -x --xz --strip-components=1
+
+mkdir build
+pushd build
+
+readonly BUILD_LLVM_MAJOR_VERSION=13
+export CC="clang-${BUILD_LLVM_MAJOR_VERSION}"
+export CXX="clang++-${BUILD_LLVM_MAJOR_VERSION}"
+
+cmake -GNinja ../llvm \
+	-DCMAKE_BUILD_TYPE=Release \
+	-DLLVM_ENABLE_PROJECTS="libcxx;libcxxabi" \
+	-DLLVM_USE_SANITIZER=MemoryWithOrigins
+
+cmake --build . -- cxx cxxabi
+
+readonly DESTDIR="/opt/llvm-${LLVM_VERSION}-instrumented-libcxx"
+mkdir -p "${DESTDIR}"
+mv lib include "${DESTDIR}"
+
+popd
+
+popd
+rm -rf "${WORKDIR}"
