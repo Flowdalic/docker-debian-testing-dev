@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+readonly GRADLE_VERSION="7.3.3"
+
+cd /opt
+
+wget "https://services.gradle.org/distributions/gradle-${GRADLE_VERSION}-bin.zip"
+
+unzip *.zip
+
+rm *.zip
+
+ln -s /opt/gradle-*/bin/gradle /usr/bin/gradle

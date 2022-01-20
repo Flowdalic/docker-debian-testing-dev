@@ -26,5 +26,8 @@ RUN chmod 755 /67-amm && /67-amm
 COPY 68-instrumented-libc++ /
 RUN chmod 755 /68-instrumented-libc++ && /68-instrumented-libc++
 
+COPY 69-gradle /
+RUN chmod 755 /69-gradle && /69-gradle
+
 COPY 70-finish /
 RUN chmod 755 /70-finish && /70-finish
