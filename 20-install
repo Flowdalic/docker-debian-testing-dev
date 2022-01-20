@@ -38,7 +38,7 @@ linux-perf
 lsb-release
 nasm
 ninja-build
-openjdk-11-jdk-headless
+openjdk-17-jdk-headless
 openssh-client
 parallel
 pkg-config
