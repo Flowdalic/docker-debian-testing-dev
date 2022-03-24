@@ -42,10 +42,8 @@ clang-tools-${LLVM_VERSION}
 clangd-${LLVM_VERSION}
 libc++-${LLVM_VERSION}-dev
 libc++1-${LLVM_VERSION}
-libc++1-${LLVM_VERSION}-dbgsym
 libc++abi-${LLVM_VERSION}-dev
 libc++abi1-${LLVM_VERSION}
-libc++abi1-${LLVM_VERSION}-dbgsym
 libclang-${LLVM_VERSION}-dev
 libclang-common-${LLVM_VERSION}-dev
 libclang1-${LLVM_VERSION}
