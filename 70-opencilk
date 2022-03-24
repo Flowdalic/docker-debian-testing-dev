@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+set -x
+set -euo pipefail
+
+git clone \
+    --depth 10 \
+    https://github.com/Flowdalic/opencilk
+
+git -C opencilk \
+    submodule update \
+    --init \
+    --recursive \
+    --depth 1
+
+pushd opencilk
+
+BUILD_TYPE="Release" \
+  INSTALL_PREFIX="/opt/opencilk" \
+  ./build.sh
+
+ninja -C build install
+
+popd
+
+rm -rf opencilk
