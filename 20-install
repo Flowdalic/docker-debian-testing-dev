@@ -30,6 +30,7 @@ libboost-all-dev
 libfmt-dev
 libgomp1
 libgtest-dev
+libsodium-dev
 libtbb-dev
 libtbb2
 liburcu-dev
