@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 set -euo pipefail
-set -x
 
-readonly LLVM_VERSION="13.0.0"
+source config
+
 readonly LLVM_SOURCES="https://github.com/llvm/llvm-project/releases/download/llvmorg-${LLVM_VERSION}/llvm-project-${LLVM_VERSION}.src.tar.xz"
 
 
@@ -17,9 +17,8 @@ curl -L "${LLVM_SOURCES}" |\
 mkdir build
 pushd build
 
-readonly BUILD_LLVM_MAJOR_VERSION=13
-export CC="clang-${BUILD_LLVM_MAJOR_VERSION}"
-export CXX="clang++-${BUILD_LLVM_MAJOR_VERSION}"
+export CC="clang-${LLVM_MAJOR_VERSION}"
+export CXX="clang++-${LLVM_MAJOR_VERSION}"
 
 cmake -GNinja ../llvm \
 	-DCMAKE_BUILD_TYPE=Release \

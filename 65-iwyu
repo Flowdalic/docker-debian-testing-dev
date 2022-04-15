@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-readonly IWYU_VERSION="0.17"
+readonly IWYU_VERSION="0.18"
 
 mkdir iwyu
 cd iwyu

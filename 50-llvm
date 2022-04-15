@@ -5,7 +5,7 @@ set -x
 source config
 
 readonly LLVM_VERSIONS=(
-    13
+    $LLVM_MAJOR_VERSION
 )
 
 install_llvm() {
@@ -35,30 +35,30 @@ EOF
     apt-get update
 
     readarray LLVM_PACKAGES <<EOF
-clang-${LLVM_VERSION}
-clang-format-${LLVM_VERSION}
-clang-tidy-${LLVM_VERSION}
-clang-tools-${LLVM_VERSION}
-clangd-${LLVM_VERSION}
-libc++-${LLVM_VERSION}-dev
-libc++1-${LLVM_VERSION}
-libc++abi-${LLVM_VERSION}-dev
-libc++abi1-${LLVM_VERSION}
-libclang-${LLVM_VERSION}-dev
-libclang-common-${LLVM_VERSION}-dev
-libclang1-${LLVM_VERSION}
-libclc-${LLVM_VERSION}
-libfuzzer-${LLVM_VERSION}-dev
-libllvm-${LLVM_VERSION}-ocaml-dev
-libllvm${LLVM_VERSION}
-libomp-${LLVM_VERSION}-dev
-lld-${LLVM_VERSION}
-lldb-${LLVM_VERSION}
-llvm-${LLVM_VERSION}
-llvm-${LLVM_VERSION}-dev
-llvm-${LLVM_VERSION}-examples
-llvm-${LLVM_VERSION}-runtime
-python3-clang-${LLVM_VERSION}
+clang-${llvm_version}
+clang-format-${llvm_version}
+clang-tidy-${llvm_version}
+clang-tools-${llvm_version}
+clangd-${llvm_version}
+libc++-${llvm_version}-dev
+libc++1-${llvm_version}
+libc++abi-${llvm_version}-dev
+libc++abi1-${llvm_version}
+libclang-${llvm_version}-dev
+libclang-common-${llvm_version}-dev
+libclang1-${llvm_version}
+libclc-${llvm_version}
+libfuzzer-${llvm_version}-dev
+libllvm-${llvm_version}-ocaml-dev
+libllvm${llvm_version}
+libomp-${llvm_version}-dev
+lld-${llvm_version}
+lldb-${llvm_version}
+llvm-${llvm_version}
+llvm-${llvm_version}-dev
+llvm-${llvm_version}-examples
+llvm-${llvm_version}-runtime
+python3-clang-${llvm_version}
 EOF
 
     apt-get ${APT_INSTALL} ${LLVM_PACKAGES[@]}
@@ -71,6 +71,6 @@ EOF
 
 curl https://apt.llvm.org/llvm-snapshot.gpg.key --output /etc/apt/trusted.gpg.d/llvm-snapshot.asc
 
-for LLVM_VERSION in "${LLVM_VERSIONS[@]}"; do
-    install_llvm "${LLVM_VERSION}"
+for VERSION in "${LLVM_VERSIONS[@]}"; do
+    install_llvm "${VERSION}"
 done
