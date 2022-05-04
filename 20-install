@@ -64,6 +64,7 @@ python3-xdg
 r-cran-knitr
 ripgrep
 rubber
+shellcheck
 sudo
 tarlz
 texinfo
