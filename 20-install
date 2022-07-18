@@ -32,7 +32,7 @@ libgomp1
 libgtest-dev
 libsodium-dev
 libtbb-dev
-libtbb2
+libtbb12
 liburcu-dev
 liburing-dev
 linux-perf
