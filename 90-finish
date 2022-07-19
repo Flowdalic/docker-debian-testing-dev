@@ -13,6 +13,5 @@ for CLANG_TOOL in "${CLANG_TOOLS[@]}"; do
 	ln "/usr/bin/${CLANG_TOOL}-${LLVM_MAJOR_VERSION}" "/usr/bin/${CLANG_TOOL}"
 done
 
-ln /usr/bin/pytest-3 /usr/bin/pytest
 ln /usr/bin/pyflakes3 /usr/bin/pyflakes
 ln /usr/bin/python3 /usr/bin/python
