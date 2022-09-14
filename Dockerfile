@@ -23,9 +23,6 @@ RUN chmod 755 /70-opencilk && /70-opencilk
 COPY 80-pip-install /
 RUN chmod 755 /80-pip-install && /80-pip-install
 
-COPY 85-iwyu /
-RUN chmod 755 /85-iwyu && /85-iwyu
-
 COPY 86-mill /
 RUN chmod 755 /86-mill && /86-mill
 
