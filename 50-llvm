@@ -52,6 +52,7 @@ libfuzzer-${llvm_version}-dev
 libllvm-${llvm_version}-ocaml-dev
 libllvm${llvm_version}
 libomp-${llvm_version}-dev
+libomp5-${llvm_version}
 lld-${llvm_version}
 lldb-${llvm_version}
 llvm-${llvm_version}
