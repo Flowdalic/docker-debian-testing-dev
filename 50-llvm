@@ -65,8 +65,8 @@ EOF
     apt-get ${APT_INSTALL} ${LLVM_PACKAGES[@]}
 
     if [[ "${llvm_version}" == "${LLVM_VERSIONS[-1]}" ]]; then
-	# Make libomp findable via e.g. Meson's find_library()
-	ln -s "/usr/lib/llvm-${llvm_version}/lib/libomp.so" /usr/lib
+        # Make libomp findable via e.g. Meson's find_library()
+        ln -s "/usr/lib/llvm-${llvm_version}/lib/libomp.so" /usr/lib
     fi
 }
 
