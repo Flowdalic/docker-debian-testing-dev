@@ -1,77 +1,10 @@
 #!/usr/bin/env bash
 set -euo pipefail
-set -x
 
 source config
 
-readonly LLVM_VERSIONS=(
-    $LLVM_MAJOR_VERSION
-)
-
-install_llvm() {
-    local llvm_version="${1}"
-
-    local debian_codename
-    debian_codename=$(lsb_release --codename --short)
-
-    local llvm_repo_name
-    local llvm_repo_dir
-    case "${debian_codename}" in
-	bookworm)
-	    llvm_repo_name="llvm-toolchain-${llvm_version}"
-	    llvm_repo_dir="unstable"
-	    ;;
-	*)
-	    llvm_repo_name="llvm-toolchain-${debian_codename}-${llvm_version}"
-	    llvm_repo_dir="${debian_codename}"
-	    ;;
-    esac
-
-    cat <<EOF > /etc/apt/sources.list.d/llvm-${llvm_version}.list
-deb http://apt.llvm.org/${llvm_repo_dir}/ ${llvm_repo_name} main
-deb-src http://apt.llvm.org/${llvm_repo_dir}/ ${llvm_repo_name} main
-EOF
-
-    apt-get update
-
-    readarray LLVM_PACKAGES <<EOF
-clang-${llvm_version}
-clang-format-${llvm_version}
-clang-tidy-${llvm_version}
-clang-tools-${llvm_version}
-clangd-${llvm_version}
-libc++-${llvm_version}-dev
-libc++1-${llvm_version}
-libc++abi-${llvm_version}-dev
-libc++abi1-${llvm_version}
-libclang-${llvm_version}-dev
-libclang-common-${llvm_version}-dev
-libclang1-${llvm_version}
-libclc-${llvm_version}
-libfuzzer-${llvm_version}-dev
-libllvm-${llvm_version}-ocaml-dev
-libllvm${llvm_version}
-libomp-${llvm_version}-dev
-libomp5-${llvm_version}
-lld-${llvm_version}
-lldb-${llvm_version}
-llvm-${llvm_version}
-llvm-${llvm_version}-dev
-llvm-${llvm_version}-examples
-llvm-${llvm_version}-runtime
-python3-clang-${llvm_version}
-EOF
-
-    apt-get ${APT_INSTALL} ${LLVM_PACKAGES[@]}
-
-    if [[ "${llvm_version}" == "${LLVM_VERSIONS[-1]}" ]]; then
-        # Make libomp findable via e.g. Meson's find_library()
-        ln -s "/usr/lib/llvm-${llvm_version}/lib/libomp.so" /usr/lib
-    fi
-}
-
-curl https://apt.llvm.org/llvm-snapshot.gpg.key --output /etc/apt/trusted.gpg.d/llvm-snapshot.asc
-
-for VERSION in "${LLVM_VERSIONS[@]}"; do
-    install_llvm "${VERSION}"
+wget https://apt.llvm.org/llvm.sh
+chmod +x llvm.sh
+for LLVM_MAJOR_VERSION in 13 14 15; do
+    ./llvm.sh ${LLVM_MAJOR_VERSION} all
 done

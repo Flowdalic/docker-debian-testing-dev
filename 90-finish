@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-source config
+readonly LLVM_MAJOR_VERSION=14
 
 CLANG_TOOLS=()
 CLANG_TOOLS+=(clang)

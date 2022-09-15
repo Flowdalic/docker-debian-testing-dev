@@ -5,6 +5,3 @@ APT_INSTALL="install -y --no-install-recommends"
 export DEBIAN_FRONTEND="noninteractive"
 
 readonly GCC_MAJOR_VERSION="12"
-
-readonly LLVM_VERSION="14.0.6"
-declare -ir LLVM_MAJOR_VERSION=$(cut -d. -f1 <<< "${LLVM_VERSION}")

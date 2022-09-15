@@ -19,7 +19,7 @@ pushd include-what-you-use
 mkdir build
 cd build
 cmake \
-	-DCMAKE_PREFIX_PATH=/usr/lib/llvm-13 \
+	-DCMAKE_PREFIX_PATH=/usr/lib/llvm-14 \
 	..
 make -l `nproc` -j `nproc`
 make install

@@ -66,6 +66,7 @@ r-cran-knitr
 ripgrep
 rubber
 shellcheck
+software-properties-common
 sudo
 tarlz
 texinfo
