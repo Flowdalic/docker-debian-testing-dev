@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-readonly LLVM_MAJOR_VERSION=14
+readonly LLVM_MAJOR_VERSION=15
 
 CLANG_TOOLS=()
 CLANG_TOOLS+=(clang)
@@ -12,6 +12,9 @@ CLANG_TOOLS+=(run-clang-tidy)
 for CLANG_TOOL in "${CLANG_TOOLS[@]}"; do
 	ln "/usr/bin/${CLANG_TOOL}-${LLVM_MAJOR_VERSION}" "/usr/bin/${CLANG_TOOL}"
 done
+
+# Make libomp findable via e.g. Meson's find_library()
+ln -s /usr/lib/llvm-${LLVM_MAJOR_VERSION}/lib/libomp.so /usr/lib
 
 ln /usr/bin/pyflakes3 /usr/bin/pyflakes
 ln /usr/bin/python3 /usr/bin/python
