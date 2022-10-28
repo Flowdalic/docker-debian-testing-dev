@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-readonly GRADLE_VERSION="7.4.2"
+readonly GRADLE_VERSION="7.5.1"
 
 cd /opt
 
