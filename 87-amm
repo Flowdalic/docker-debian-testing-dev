@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-readonly AMM_VERSION="2.5.2"
+readonly AMM_VERSION="2.5.5"
 readonly SCALA_VERSION="2.13"
 
 curl -L "https://github.com/com-lihaoyi/Ammonite/releases/download/${AMM_VERSION}/${SCALA_VERSION}-${AMM_VERSION}" \
