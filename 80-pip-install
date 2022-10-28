@@ -2,7 +2,7 @@
 set -euo pipefail
 
 declare -A PIP_PACKAGES=(
-	[mypy]=0.971
+	[mypy]=0.982
 	[pdoc3]=0.10.0
 	[yapf]=0.32.0
 	[meson]=0.62.2
