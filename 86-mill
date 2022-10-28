@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-readonly MILL_VERSION="0.10.7"
+readonly MILL_VERSION="0.10.8"
 
 curl -L "https://github.com/com-lihaoyi/mill/releases/download/${MILL_VERSION}/${MILL_VERSION}-assembly" \
      > /usr/local/bin/mill
