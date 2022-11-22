@@ -3,6 +3,8 @@ set -euo pipefail
 
 source config
 
+echo "VERSION_CODENAME=bookworm" >> /etc/os-release
+
 wget https://apt.llvm.org/llvm.sh
 chmod +x llvm.sh
 for LLVM_MAJOR_VERSION in 13 14 15; do
