@@ -64,6 +64,7 @@ python3-wheel
 python3-xdg
 r-cran-knitr
 ripgrep
+rsync
 rubber
 shellcheck
 software-properties-common
