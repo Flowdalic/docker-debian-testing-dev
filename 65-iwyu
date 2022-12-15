@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-readonly IWYU_VERSION="0.18"
+readonly IWYU_VERSION="0.19"
 
 mkdir iwyu
 cd iwyu
@@ -19,7 +19,7 @@ pushd include-what-you-use
 mkdir build
 cd build
 cmake \
-	-DCMAKE_PREFIX_PATH=/usr/lib/llvm-14 \
+	-DCMAKE_PREFIX_PATH=/usr/lib/llvm-15 \
 	..
 make -l `nproc` -j `nproc`
 make install
