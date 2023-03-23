@@ -9,5 +9,7 @@ declare -A PIP_PACKAGES=(
 )
 
 for pip_package in "${!PIP_PACKAGES[@]}"; do
-	pip install ${pip_package}==${PIP_PACKAGES[${pip_package}]}
+	pip install \
+		--break-system-packages \
+		${pip_package}==${PIP_PACKAGES[${pip_package}]}
 done
