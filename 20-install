@@ -16,6 +16,8 @@ cwebx
 debhelper
 dh-python
 doxygen
+fonts-dejavu
+fonts-inconsolata
 g++
 gcc-${GCC_MAJOR_VERSION}
 gcovr
