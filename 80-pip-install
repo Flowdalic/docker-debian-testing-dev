@@ -2,10 +2,10 @@
 set -euo pipefail
 
 declare -A PIP_PACKAGES=(
-	[mypy]=0.982
+	[mypy]=1.4.1
 	[pdoc3]=0.10.0
-	[yapf]=0.32.0
-	[meson]=0.63.3
+	[yapf]=0.40.1
+	[meson]=1.2.0
 )
 
 for pip_package in "${!PIP_PACKAGES[@]}"; do

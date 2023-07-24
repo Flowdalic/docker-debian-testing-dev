@@ -17,6 +17,7 @@ debhelper
 dh-python
 doxygen
 fonts-dejavu
+fonts-fantasque-sans
 fonts-inconsolata
 g++
 gcc-${GCC_MAJOR_VERSION}

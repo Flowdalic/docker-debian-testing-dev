@@ -3,7 +3,7 @@ set -euo pipefail
 
 source config
 
-readonly LLVM_VERSION="14.0.6"
+readonly LLVM_VERSION="15.0.7"
 readonly LLVM_SOURCES="https://github.com/llvm/llvm-project/releases/download/llvmorg-${LLVM_VERSION}/llvm-project-${LLVM_VERSION}.src.tar.xz"
 declare -ir LLVM_MAJOR_VERSION=$(cut -d. -f1 <<< "${LLVM_VERSION}")
 
